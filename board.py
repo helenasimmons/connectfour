@@ -21,28 +21,15 @@ class Board:
     def add_piece(self, col, piece):
         if col > self.height+1 or col < 1:
             raise ValueError("Invalid Column")
-        placed = False
+        
+        if self.board[0][col-1] != " ":
+            raise ValueError("Column Full")
+        
         for row in range(len(self.board)):
-            for element in range(len(self.board[row])):
-                if element == col-1:
-#                    for element in self.board[0]:
-#                        if element != " ":
-#                            full = True
-#                    if full == True:
-#                        raise ValueError("Column Full")
-                    if self.board[self.height-1][element] == " " and placed == False:
-                        if piece == "x":
-                            self.board[self.height-1][element] = "x"
-                        else:
-                            self.board[self.height-1][element] = "o"
-                        placed = True
-                    elif row != self.height-1 and placed == False:
-                        if self.board[row+1][element] != " ":
-                            if piece == "x":
-                                self.board[row][element] = "x"
-                            else:
-                                self.board[row][element] = "o"
-                            placed = True
+            if self.board[self.height-1-row][col-1] == " ":
+                self.board[self.height-1-row][col-1] = piece
+                break
+                
         
     def empty_board(self):
         self.board = [[" "]*self.width for i in range(self.height)]
@@ -76,6 +63,20 @@ class Board:
                         break
                 if identical == True:
                     return(True)
+#            for element in range(len(self.board[row])):
+#                d_neg_sequence = [self.board[r][c], self.board[r+1][c+1], self.board[r+2][c+2], self.board[r+3][c+3]]
+#                print(d_neg_sequence)
+#                value = d_neg_sequence[0]
+#                for i in range(4):
+#                    if d_neg_sequence[i] == value:
+#                        if value != " ":
+#                            identical = True
+#                    else:
+#                        identical = False
+#                        break
+#                if identical == True:
+#                    return(True)
+                
         if identical == False:
             return(False)
                 
@@ -92,7 +93,10 @@ class Board:
             return(False)
         
         
-    
+if __name__ == "__main__":
+    b = Board(7,6)
+    b.add_piece(3,'x')
+    b.disp_board()
             
 
         
