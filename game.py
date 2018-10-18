@@ -12,28 +12,30 @@ class Game:
         
     def play_game(self):
         print()
-        print('Welcome to Connect Four')
+        print('Welcome to Connect Four!')
         while True:
             try:
+                print()
                 self.board.disp_board()
                 self.choice = self.players[self.turn].get_choice()
-                self.board.add_piece(self.choice, self.players[self.turn].piece)            
-                
+                self.board.add_piece(self.choice, self.players[self.turn].piece)
                 self.board.check_win()
                 if self.board.check_win() == True:
                     self.board.disp_board()
+                    print()
+                    print(f"{self.players[self.turn].name} has won!")
                     print('Game Over')
                     break
                 if self.board.check_win() == False:
                     self.turn += 1
-#                if self.board.is_full() == False:
-#                    pass
                     
                 if self.board.is_full() == True:
                     self.board.disp_board()
+                    print()
+                    print('The board is full! It\'s a tie!')
+                    self.board.empty_board()
                     print('Game Over')
-                    
-                    
+
                 self.turn = self.turn % 2
                 
             except Exception as e:
@@ -42,5 +44,6 @@ class Game:
                 print()
     
 if __name__ == "__main__":
-    Game()
+    g = Game()
+    g.play_game()
     

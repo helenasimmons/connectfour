@@ -8,7 +8,10 @@ class Player:
         return self.name
     
     def get_choice(self):
-        choice = int(input(f'{self.name} In which column do you want to place your piece? '))
+        print()
+        print(f'{self.name} In which column do you want to place your piece? ')
+        print()
+        choice = int(input('> '))
         return int(choice)
 
 if __name__ == "__main__":
