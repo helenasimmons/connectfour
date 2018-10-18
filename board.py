@@ -35,6 +35,8 @@ class Board:
         self.board = [[" "]*self.width for i in range(self.height)]
         
     def check_win(self):
+        if self.height < 4 or self.width < 4:
+            return(False)
         for row in range(len(self.board)):
             for element in range(len(self.board[row])):
                 c = element-4
@@ -63,19 +65,31 @@ class Board:
                         break
                 if identical == True:
                     return(True)
-#            for element in range(len(self.board[row])):
-#                d_neg_sequence = [self.board[r][c], self.board[r+1][c+1], self.board[r+2][c+2], self.board[r+3][c+3]]
-#                print(d_neg_sequence)
-#                value = d_neg_sequence[0]
-#                for i in range(4):
-#                    if d_neg_sequence[i] == value:
-#                        if value != " ":
-#                            identical = True
-#                    else:
-#                        identical = False
-#                        break
-#                if identical == True:
-#                    return(True)
+            for element in range(len(self.board[row])):
+                r = row-3
+                c = element-3
+                d_neg_sequence = [self.board[r][c], self.board[r+1][c+1], self.board[r+2][c+2], self.board[r+3][c+3]]
+                for i in range(4):
+                    if d_neg_sequence[i] == d_neg_sequence[0]:
+                        if d_neg_sequence[0] != " ":
+                            identical = True
+                    else:
+                        identical = False
+                        break
+                if identical == True:
+                    return(True)
+            for element in range(len(self.board[row])):
+                r = row-3
+                d_pos_sequence = [self.board[r][c], self.board[r-1][0+1], self.board[r-2][0+2], self.board[r-3][0+3]]
+                for i in range(4):
+                    if d_pos_sequence[i] == d_pos_sequence[0]:
+                        if d_pos_sequence[0] != " ":
+                            identical = True
+                    else:
+                        identical = False
+                        break
+                if identical == True:
+                    return(True)
                 
         if identical == False:
             return(False)
@@ -93,10 +107,6 @@ class Board:
             return(False)
         
         
-if __name__ == "__main__":
-    b = Board(7,6)
-    b.add_piece(3,'x')
-    b.disp_board()
             
 
         
