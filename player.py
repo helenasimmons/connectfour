@@ -9,7 +9,7 @@ class Player:
     
     def get_choice(self):
         print()
-        print(f'{self.name} In which column do you want to place your piece? ')
+        print(f'{self.name}, in which column do you want to place your piece? ')
         print()
         choice = int(input('> '))
         return int(choice)

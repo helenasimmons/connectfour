@@ -8,8 +8,7 @@ class Game:
         self.players.append(Player('o')) #player 2
         self.board = Board(7,6)
         self.turn = 0
-        self.game = self.play_game()
-        
+               
     def play_game(self):
         print()
         print('Welcome to Connect Four!')
@@ -25,7 +24,9 @@ class Game:
                     print()
                     print(f"{self.players[self.turn].name} has won!")
                     print('Game Over')
-                    break
+                    self.board.empty_board()
+                    return
+                
                 if self.board.check_win() == False:
                     self.turn += 1
                     
@@ -35,6 +36,7 @@ class Game:
                     print('The board is full! It\'s a tie!')
                     self.board.empty_board()
                     print('Game Over')
+                    return
 
                 self.turn = self.turn % 2
                 
