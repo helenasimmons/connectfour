@@ -107,20 +107,6 @@ class Board:
             return(False)
         
         
-if __name__ == "__main__":
-    b = Board(7, 6)
-    b.add_piece(4, "x")
-    b.add_piece(5, "o")
-    b.add_piece(5, "x")
-    b.add_piece(6, "o")
-    b.add_piece(6, "o")
-    b.add_piece(6, "x")
-    b.add_piece(7, "o")
-    b.add_piece(7, "o")
-    b.add_piece(7, "o")
-    b.add_piece(7, "x")
-    b.disp_board()
-    b.check_win()
             
 
         
