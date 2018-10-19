@@ -80,7 +80,7 @@ class Board:
                     return(True)
             for element in range(len(self.board[row])):
                 r = row-3
-                d_pos_sequence = [self.board[r][c], self.board[r-1][0+1], self.board[r-2][0+2], self.board[r-3][0+3]]
+                d_pos_sequence = [self.board[r][c], self.board[r-1][c+1], self.board[r-2][c+2], self.board[r-3][c+3]]
                 for i in range(4):
                     if d_pos_sequence[i] == d_pos_sequence[0]:
                         if d_pos_sequence[0] != " ":
@@ -107,6 +107,20 @@ class Board:
             return(False)
         
         
+if __name__ == "__main__":
+    b = Board(7, 6)
+    b.add_piece(4, "x")
+    b.add_piece(5, "o")
+    b.add_piece(5, "x")
+    b.add_piece(6, "o")
+    b.add_piece(6, "o")
+    b.add_piece(6, "x")
+    b.add_piece(7, "o")
+    b.add_piece(7, "o")
+    b.add_piece(7, "o")
+    b.add_piece(7, "x")
+    b.disp_board()
+    b.check_win()
             
 
         
