@@ -10,6 +10,13 @@ class Game:
         self.turn = 0
                
     def play_game(self):
+        '''allows for a game of Connect Four to be played.
+            Two players will be allowed to face off against
+            each other in a single game.
+            
+            One player will be able to win; however, it will
+            allow for a draw to be called when appropriate. 
+        '''
         print()
         print('Welcome to Connect Four!')
         while True:
@@ -19,6 +26,7 @@ class Game:
                 self.choice = self.players[self.turn].get_choice()
                 self.board.add_piece(self.choice, self.players[self.turn].piece)
                 self.board.check_win()
+                
                 if self.board.check_win() == True:
                     self.board.disp_board()
                     print()
@@ -33,7 +41,8 @@ class Game:
                 if self.board.is_full() == True:
                     self.board.disp_board()
                     print()
-                    print('The board is full! It\'s a tie!')
+                    print('The board is full!')                    
+                    print('It\'s a tie!')
                     self.board.empty_board()
                     print('Game Over')
                     return
