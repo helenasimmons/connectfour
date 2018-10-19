@@ -6,7 +6,7 @@ class Player:
         self.piece = piece
         
     def get_name(self):
-        '''Allows for the player to input their name. 
+        '''Asks and allows the player to input their name. 
         '''
         self.name = input('What is your name? ')
         return self.name
