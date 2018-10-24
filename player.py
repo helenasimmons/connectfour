@@ -9,7 +9,7 @@ class Player:
         '''Asks and allows the player to input their name. 
         '''
         self.name = input('What is your name? ')
-        return self.name
+        return self.name # unnecessary
     
     def get_choice(self):
         '''Allows for the player to choose a column in which to place their piece.

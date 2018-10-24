@@ -19,7 +19,7 @@ class Board:
         print(*col_num)
         
     def add_piece(self, col, piece):
-        if col > self.height+1 or col < 1:
+        if col > self.height+1 or col < 1: # why self.height+1?
             raise ValueError("Invalid Column")
         
         if self.board[0][col-1] != " ":
@@ -34,7 +34,7 @@ class Board:
     def empty_board(self):
         self.board = [[" "]*self.width for i in range(self.height)]
         
-    def check_win(self):
+    def check_win(self): # comments would be nice for each nested for
         if self.height < 4 or self.width < 4:
             return(False)
         for row in range(len(self.board)):
@@ -46,8 +46,8 @@ class Board:
                 for i in range(4):
                     if h_sequence[i] == value:
                         if value != " ":
-                            identical = True
-                    else:
+                            identical = True # just return True
+                    else:              
                         identical = False
                         break
                 if identical == True:
@@ -100,13 +100,17 @@ class Board:
         for row in self.board:
             for element in row:
                 if element == " ":
-                    not_empty = True
-        if not_empty == False:
+                    not_empty = True # just return False here
+        if not_empty == False:       # and return True here
             return(True)
         else:
             return(False)
         
         
-            
+if __name__ == "__main__":
+    b = Board(7,6)
+    b.disp_board()
+    b.add_piece(3,'x')
+    b.disp_board()
 
         
