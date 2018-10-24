@@ -4,8 +4,8 @@ from player import Player
 class Game:
     def __init__(self):
         self.players = []
-        self.players.append(Player('x')) #player 1
-        self.players.append(Player('o')) #player 2
+        self.players.append(Player('x')) #player 1   should happen in play_game
+        self.players.append(Player('o')) #player 2   so that the greeting comes first
         self.board = Board(7,6)
         self.turn = 0
                
@@ -27,7 +27,7 @@ class Game:
                 self.board.add_piece(self.choice, self.players[self.turn].piece)
                 self.board.check_win()
                 
-                if self.board.check_win() == True:
+                if self.board.check_win() == True: #don't need == True
                     self.board.disp_board()
                     print()
                     print(f"{self.players[self.turn].name} has won!")
@@ -35,7 +35,7 @@ class Game:
                     self.board.empty_board()
                     return
                 
-                if self.board.check_win() == False:
+                if self.board.check_win() == False: #unnecessary conditional
                     self.turn += 1
                     
                 if self.board.is_full() == True:
